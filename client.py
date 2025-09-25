@@ -3,10 +3,14 @@ import argparse
 from fastmcp import Client
 from fastmcp.client.transports import PythonStdioTransport
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 def create_transport():
     # サーバースクリプトのパス
-    server_script = "/Users/takuto/Desktop/mcp-test/letter-counter/server.py"
-
+    server_script = os.getenv("SERVER_PATH")
     # PythonStdioTransportを使用してサーバを起動
     return PythonStdioTransport(script_path=server_script)
 
